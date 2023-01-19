@@ -1,0 +1,46 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.body {
+  font-family: "Roboto", "Oxygen";
+}
+
+.App {
+  margin: 0 auto;
+  display: grid;
+  width: 1200px;
+
+  grid-template-areas:
+    "header header"
+    "nav cont";
+
+  grid-template-rows: 60px 1fr;
+  grid-template-columns: 2fr 10fr;
+}
+
+.header {
+  grid-area: header;
+  background-color: black;
+}
+
+.header img {
+  width: 40px;
+}
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav a {
+  padding: 8px;
+  background-color: bisque;
+}
+
+.cont {
+  grid-area: cont;
+  background-color: gray;
+  background-color: orange;
+}

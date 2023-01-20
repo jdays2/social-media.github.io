@@ -1,0 +1,27 @@
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+}
+
+.icon {
+  width: 20px;
+  margin: 5px;
+}
+
+.item {
+  color: black;
+  font-size: 20px;
+  text-decoration: none;
+
+  display: flex;
+  margin: 10px;
+}
+
+.item:last-child {
+  margin-top: 40px;
+}
+
+.active {
+  color: rgb(49, 49, 255);
+}

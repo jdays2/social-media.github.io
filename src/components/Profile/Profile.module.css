@@ -1,8 +1,10 @@
 .cont {
   grid-area: cont;
   background-color: orange;
+  margin: 10px;
 }
 
-.item {
-  color: red;
+.cont img {
+  width: 100%;
+  height: 300px;
 }

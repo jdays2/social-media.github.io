@@ -1,0 +1,15 @@
+.nav {
+  grid-area: nav;
+  display: flex;
+  flex-direction: column;
+}
+
+.nav a {
+  padding: 8px;
+  background-color: bisque;
+}
+
+.item {
+  color: black;
+  font-size: 20px;
+}

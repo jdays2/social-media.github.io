@@ -1,11 +1,23 @@
+import classes from "./Navbar.module.css";
+
 function Navbar() {
   return (
-    <nav className="nav">
-      <a href="#s">Profile</a>
-      <a href="#s">Messeges</a>
-      <a href="#s">News</a>
-      <a href="#s">Music</a>
-      <a href="#s">Settings</a>
+    <nav className={classes.nav}>
+      <a className={classes.item} href="#s">
+        Profile
+      </a>
+      <a className={classes.item} href="#s">
+        Messeges
+      </a>
+      <a className={classes.item} href="#s">
+        News
+      </a>
+      <a className={classes.item} href="#s">
+        Music
+      </a>
+      <a className={classes.item} href="#s">
+        Settings
+      </a>
     </nav>
   );
 }

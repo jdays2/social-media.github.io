@@ -1,0 +1,8 @@
+.cont {
+  grid-area: cont;
+  background-color: orange;
+}
+
+.item {
+  color: red;
+}

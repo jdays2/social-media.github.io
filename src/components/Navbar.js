@@ -1,21 +1,21 @@
-import classes from "./Navbar.module.css";
+import s from "./Navbar.module.css";
 
 function Navbar() {
   return (
-    <nav className={classes.nav}>
-      <a className={classes.item} href="#s">
+    <nav className={s.nav}>
+      <a className={s.item} href="#s">
         Profile
       </a>
-      <a className={classes.item} href="#s">
+      <a className={s.item} href="#s">
         Messeges
       </a>
-      <a className={classes.item} href="#s">
+      <a className={s.item} href="#s">
         News
       </a>
-      <a className={classes.item} href="#s">
+      <a className={s.item} href="#s">
         Music
       </a>
-      <a className={classes.item} href="#s">
+      <a className={s.item} href="#s">
         Settings
       </a>
     </nav>

@@ -13,7 +13,7 @@ function Navbar() {
           to="/profile"
           className={({ isActive }) => (isActive ? s.active : undefined)}
         >
-          Profile
+          PROFILE
         </NavLink>
       </div>
       <div className={s.item}>
@@ -25,7 +25,7 @@ function Navbar() {
           to="/dialogs"
           className={({ isActive }) => (isActive ? s.active : undefined)}
         >
-          Messeges
+          MESSAGES
         </NavLink>
       </div>
       <div className={s.item}>
@@ -37,7 +37,7 @@ function Navbar() {
           to="/news"
           className={({ isActive }) => (isActive ? s.active : undefined)}
         >
-          News
+          NEWS
         </NavLink>
       </div>
       <div className={s.item}>
@@ -49,7 +49,7 @@ function Navbar() {
           to="/music"
           className={({ isActive }) => (isActive ? s.active : undefined)}
         >
-          Music
+          MUSIC
         </NavLink>
       </div>
       <div className={s.item}>
@@ -61,7 +61,7 @@ function Navbar() {
           to="/settings"
           className={({ isActive }) => (isActive ? s.active : undefined)}
         >
-          Settings
+          SETTINGS
         </NavLink>
       </div>
     </nav>

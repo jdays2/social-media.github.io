@@ -8,35 +8,35 @@ function Navbar() {
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a>Profile</a>
+        <a href="/profile">Profile</a>
       </div>
       <div className={s.item} href="#s">
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a> Messeges</a>
+        <a href="/dialogs"> Messeges</a>
       </div>
       <div className={s.item} href="#s">
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a> News</a>
+        <a href="/news"> News</a>
       </div>
       <div className={s.item} href="#s">
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a>Music</a>
+        <a href="/music">Music</a>
       </div>
       <div className={s.item} href="#s">
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a>Settings</a>
+        <a href="/settings">Settings</a>
       </div>
     </nav>
   );

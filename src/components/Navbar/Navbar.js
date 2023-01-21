@@ -1,42 +1,68 @@
+import { NavLink } from "react-router-dom";
 import s from "./Navbar.module.css";
 
 function Navbar() {
   return (
     <nav className={s.nav}>
-      <div className={`${s.item} ${s.active}`} href="#s">
+      <div className={s.item}>
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a href="/profile">Profile</a>
+        <NavLink
+          to="/profile"
+          className={({ isActive }) => (isActive ? s.active : undefined)}
+        >
+          Profile
+        </NavLink>
       </div>
-      <div className={s.item} href="#s">
+      <div className={s.item}>
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a href="/dialogs"> Messeges</a>
+        <NavLink
+          to="/dialogs"
+          className={({ isActive }) => (isActive ? s.active : undefined)}
+        >
+          Messeges
+        </NavLink>
       </div>
-      <div className={s.item} href="#s">
+      <div className={s.item}>
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a href="/news"> News</a>
+        <NavLink
+          to="/news"
+          className={({ isActive }) => (isActive ? s.active : undefined)}
+        >
+          News
+        </NavLink>
       </div>
-      <div className={s.item} href="#s">
+      <div className={s.item}>
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a href="/music">Music</a>
+        <NavLink
+          to="/music"
+          className={({ isActive }) => (isActive ? s.active : undefined)}
+        >
+          Music
+        </NavLink>
       </div>
-      <div className={s.item} href="#s">
+      <div className={s.item}>
         <img
           className={s.icon}
           src="https://img.icons8.com/windows/512/home.png"
         />
-        <a href="/settings">Settings</a>
+        <NavLink
+          to="/settings"
+          className={({ isActive }) => (isActive ? s.active : undefined)}
+        >
+          Settings
+        </NavLink>
       </div>
     </nav>
   );

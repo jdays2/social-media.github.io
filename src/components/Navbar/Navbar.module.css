@@ -10,9 +10,8 @@
 }
 
 .item {
-  color: black;
+  color: red;
   font-size: 20px;
-  text-decoration: none;
 
   display: flex;
   margin: 10px;
@@ -22,6 +21,12 @@
   margin-top: 40px;
 }
 
-.active {
-  color: rgb(49, 49, 255);
+.item a {
+  text-decoration: none;
+  color: black;
+}
+
+a.active {
+  color: gold;
+  font-size: 25px;
 }

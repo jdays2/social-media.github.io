@@ -3,13 +3,17 @@ import Post from "./Post/Post";
 
 function MyPosts() {
   return (
-    <div>
+    <div className={s.postBlock}>
       my post
       <div>new post</div>
       <div>
-        <textarea></textarea>
-        <button>Add new post</button>
-        <button>Remove post</button>
+        <div>
+          <textarea></textarea>
+        </div>
+        <div>
+          <button>Add new post</button>
+          <button>Remove post</button>
+        </div>
       </div>
       <div className={s.posts}></div>
       <Post message="Сегодня у меня очень продуктивный день!" />

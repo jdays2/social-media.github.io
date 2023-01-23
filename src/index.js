@@ -10,5 +10,28 @@ let postsData = [
   { id: 4, message: "Hi! Thats my 4st post", likeCount: 112 },
 ];
 
+let dialogesData = [
+  { id: 1, name: "Mark" },
+  { id: 2, name: "Vitalya" },
+  { id: 3, name: "Kirillko" },
+  { id: 4, name: "Sanya" },
+  { id: 5, name: "Geshka" },
+];
+
+let messagesData = [
+  { id: 1, message: "Hi" },
+  { id: 2, message: "Hello" },
+  { id: 3, message: "Yo" },
+  { id: 4, message: "How is ur homework?" },
+  { id: 5, message: "I dont rly know..." },
+  { id: 6, message: "lol" },
+];
+
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App postsData={postsData} />);
+root.render(
+  <App
+    postsData={postsData}
+    dialogesData={dialogesData}
+    messagesData={messagesData}
+  />
+);

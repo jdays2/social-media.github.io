@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
 
-function App({ postsData }) {
+function App({ postsData, messagesData, dialogesData }) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -16,7 +16,15 @@ function App({ postsData }) {
         <Navbar />
         <div className="app-wrapper-content">
           <Routes>
-            <Route path="/dialogs/*" element={<Dialogs />} />
+            <Route
+              path="/dialogs/*"
+              element={
+                <Dialogs
+                  messagesData={messagesData}
+                  dialogesData={dialogesData}
+                />
+              }
+            />
             <Route
               path="/profile"
               element={<Profile postsData={postsData} />}

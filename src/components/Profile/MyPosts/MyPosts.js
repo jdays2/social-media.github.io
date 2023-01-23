@@ -1,18 +1,24 @@
+import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts({ state }) {
+  let textAreaElement = React.createRef();
+
+  let addNewPost = () => {
+    console.log(textAreaElement.current.value);
+  };
+
   return (
     <div className={s.postBlock}>
       my post
       <div>new post</div>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea ref={textAreaElement}></textarea>
         </div>
         <div>
-          <button>Add new post</button>
-          <button>Remove post</button>
+          <button onClick={addNewPost}>Add new post</button>
         </div>
       </div>
       <div className={s.posts}></div>

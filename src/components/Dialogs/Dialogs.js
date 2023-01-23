@@ -2,23 +2,18 @@ import DialogItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 
-function Dialogs() {
+function Dialogs({ dialogesData, messagesData }) {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs_items}>
-        <DialogItem name="Mark" id={1} />
-        <DialogItem name="Vitalya" id={2} />
-        <DialogItem name="Kirillko" id={3} />
-        <DialogItem name="Sanya" id={4} />
-        <DialogItem name="Geshka" id={5} />
-        <DialogItem name="Lenin" id={6} />
+        {dialogesData.map((dialog) => (
+          <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
+        ))}
       </div>
       <div className={s.messages}>
-        <Message message="Hello world!" />
-        <Message message="Hello world!" />
-        <Message message="Hello world!" />
-        <Message message="Hello world!" />
-        <Message message="Hello world!" />
+        {messagesData.map((message) => (
+          <Message key={message.id} message={message.message} />
+        ))}
       </div>
     </div>
   );

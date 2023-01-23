@@ -1,7 +1,7 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts() {
+function MyPosts({ postsData }) {
   return (
     <div className={s.postBlock}>
       my post
@@ -16,9 +16,9 @@ function MyPosts() {
         </div>
       </div>
       <div className={s.posts}></div>
-      <Post message="Сегодня у меня очень продуктивный день!" />
-      <Post message="Я сходил по врачам, что давно хотел сделать и поменял постель." />
-      <Post message="Только проснулся..." />
+      {postsData.map((post) => (
+        <Post key={post.id} message={post.message} likeCount={post.likeCount} />
+      ))}
     </div>
   );
 }

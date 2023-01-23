@@ -3,10 +3,10 @@ import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
 function MyPosts({ state }) {
-  let textAreaElement = React.createRef();
+  let newPostArea = React.createRef();
 
   let addNewPost = () => {
-    console.log(textAreaElement.current.value);
+    alert(newPostArea.current.value);
   };
 
   return (
@@ -15,7 +15,7 @@ function MyPosts({ state }) {
       <div>new post</div>
       <div>
         <div>
-          <textarea ref={textAreaElement}></textarea>
+          <textarea ref={newPostArea}></textarea>
         </div>
         <div>
           <button onClick={addNewPost}>Add new post</button>

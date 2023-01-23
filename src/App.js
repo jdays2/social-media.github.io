@@ -7,6 +7,7 @@ import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
+import { updateNewPostText } from "./Redux/state";
 
 function App({ state, addPost }) {
   return (
@@ -21,7 +22,13 @@ function App({ state, addPost }) {
           />
           <Route
             path="/profile"
-            element={<Profile state={state.profilePage} addPost={addPost} />}
+            element={
+              <Profile
+                updateNewPostText={updateNewPostText}
+                state={state.profilePage}
+                addPost={addPost}
+              />
+            }
           />
           ;
           <Route path="/music" element={<Music />} />

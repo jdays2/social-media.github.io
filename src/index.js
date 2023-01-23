@@ -1,9 +1,5 @@
-import React from "react";
-import ReactDOM from "react-dom/client";
+import rerenderEntireThree from "./render";
 import "./index.css";
-import App from "./App";
-
 import state from "./Redux/state";
 
-const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App state={state} />);
+rerenderEntireThree(state);

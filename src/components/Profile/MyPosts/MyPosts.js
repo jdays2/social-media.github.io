@@ -23,15 +23,9 @@ function MyPosts() {
         </div>
       </div>
       <div className={s.posts}></div>
-      {postsData.map((post) => {
-        return (
-          <Post
-            key={post.id}
-            message={post.message}
-            likeCount={post.likeCount}
-          />
-        );
-      })}
+      {postsData.map((post) => (
+        <Post key={post.id} message={post.message} likeCount={post.likeCount} />
+      ))}
     </div>
   );
 }

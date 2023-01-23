@@ -23,16 +23,14 @@ function Dialogs() {
   return (
     <div className={s.dialogs}>
       <div className={s.dialogs_items}>
-        {dialogsData.map((dialog) => {
-          return (
-            <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
-          );
-        })}
+        {dialogsData.map((dialog) => (
+          <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
+        ))}
       </div>
       <div className={s.messages}>
-        {messagesData.map((message) => {
-          return <Message key={message.id} message={message.message} />;
-        })}
+        {messagesData.map((message) => (
+          <Message key={message.id} message={message.message} />
+        ))}
       </div>
     </div>
   );

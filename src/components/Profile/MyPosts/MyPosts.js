@@ -1,7 +1,7 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts({ postsData }) {
+function MyPosts({ state }) {
   return (
     <div className={s.postBlock}>
       my post
@@ -16,7 +16,7 @@ function MyPosts({ postsData }) {
         </div>
       </div>
       <div className={s.posts}></div>
-      {postsData.map((post) => (
+      {state.postsData.map((post) => (
         <Post key={post.id} message={post.message} likeCount={post.likeCount} />
       ))}
     </div>

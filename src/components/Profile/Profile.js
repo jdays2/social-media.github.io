@@ -2,11 +2,11 @@ import s from "./Profile.module.css";
 import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
 
-function Profile({ postsData }) {
+function Profile({ state }) {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts postsData={postsData} />
+      <MyPosts state={state} />
     </div>
   );
 }

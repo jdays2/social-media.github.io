@@ -1,14 +1,7 @@
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts() {
-  let postsData = [
-    { id: 1, message: "Hi! Thats my 1st post", likeCount: 12 },
-    { id: 2, message: "Hi! Thats my 2st post", likeCount: 1 },
-    { id: 3, message: "Hi! Thats my 3st post", likeCount: 2 },
-    { id: 4, message: "Hi! Thats my 4st post", likeCount: 112 },
-  ];
-
+function MyPosts({ postsData }) {
   return (
     <div className={s.postBlock}>
       my post

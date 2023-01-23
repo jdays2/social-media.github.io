@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
 
-function App() {
+function App({ postsData }) {
   return (
     <BrowserRouter>
       <div className="app-wrapper">
@@ -17,7 +17,11 @@ function App() {
         <div className="app-wrapper-content">
           <Routes>
             <Route path="/dialogs/*" element={<Dialogs />} />
-            <Route path="/profile" element={<Profile />} />
+            <Route
+              path="/profile"
+              element={<Profile postsData={postsData} />}
+            />
+            ;
             <Route path="/music" element={<Music />} />
             <Route path="/news" element={<News />} />
             <Route path="/settings" element={<Settings />} />

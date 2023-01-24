@@ -6,14 +6,10 @@ import ReactDOM from "react-dom/client";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-let rerenderEntireThree = (state) => {
+let rerenderEntireThree = () => {
   root.render(
     <BrowserRouter>
-      <App
-        state={store.getState()}
-        addPost={store.addPost.bind(store)}
-        updateNewPostText={store.updateNewPostText.bind(store)}
-      />
+      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>
   );
 };

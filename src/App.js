@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
 
-function App({ state, addPost, updateNewPostText }) {
+function App({ state, dispatch }) {
   return (
     <div className="app-wrapper">
       <Header />
@@ -21,13 +21,7 @@ function App({ state, addPost, updateNewPostText }) {
           />
           <Route
             path="/profile"
-            element={
-              <Profile
-                updateNewPostText={updateNewPostText}
-                state={state.profilePage}
-                addPost={addPost}
-              />
-            }
+            element={<Profile dispatch={dispatch} state={state.profilePage} />}
           />
           ;
           <Route path="/music" element={<Music />} />

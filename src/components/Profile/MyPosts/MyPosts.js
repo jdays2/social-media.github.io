@@ -2,13 +2,17 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts({ state, addPost, updateNewPostText }) {
+function MyPosts({ state, dispatch }) {
   let newPostArea = React.createRef();
 
   let onPostChange = () => {
     let text = newPostArea.current.value;
     console.log(text);
-    updateNewPostText(text);
+    dispatch({ type: "UPDATE-NEW-POST-TEXT", newText: text });
+  };
+
+  let addPost = () => {
+    dispatch({ type: "ADD-POST" });
   };
 
   return (

@@ -1,22 +1,33 @@
+import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts({ postsData }) {
+function MyPosts({ state, addPost, updateNewPostText }) {
+  let newPostArea = React.createRef();
+
+  let onPostChange = () => {
+    let text = newPostArea.current.value;
+    updateNewPostText(text);
+  };
+
   return (
     <div className={s.postBlock}>
       my post
       <div>new post</div>
       <div>
         <div>
-          <textarea></textarea>
+          <textarea
+            ref={newPostArea}
+            value={state.newPostText}
+            onChange={onPostChange}
+          />
         </div>
         <div>
-          <button>Add new post</button>
-          <button>Remove post</button>
+          <button onClick={addPost}>Add new post</button>
         </div>
       </div>
       <div className={s.posts}></div>
-      {postsData.map((post) => (
+      {state.postsData.map((post) => (
         <Post key={post.id} message={post.message} likeCount={post.likeCount} />
       ))}
     </div>

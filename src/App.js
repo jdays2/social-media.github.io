@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./components/Dialogs/Dialogs";
 import Header from "./components/Header/Header";
@@ -7,36 +7,36 @@ import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
+import { updateNewPostText } from "./Redux/state";
 
-function App({ postsData, messagesData, dialogesData }) {
+function App({ state, addPost }) {
   return (
-    <BrowserRouter>
-      <div className="app-wrapper">
-        <Header />
-        <Navbar />
-        <div className="app-wrapper-content">
-          <Routes>
-            <Route
-              path="/dialogs/*"
-              element={
-                <Dialogs
-                  messagesData={messagesData}
-                  dialogesData={dialogesData}
-                />
-              }
-            />
-            <Route
-              path="/profile"
-              element={<Profile postsData={postsData} />}
-            />
-            ;
-            <Route path="/music" element={<Music />} />
-            <Route path="/news" element={<News />} />
-            <Route path="/settings" element={<Settings />} />
-          </Routes>
-        </div>
+    <div className="app-wrapper">
+      <Header />
+      <Navbar />
+      <div className="app-wrapper-content">
+        <Routes>
+          <Route
+            path="/dialogs/*"
+            element={<Dialogs state={state.messagePage} />}
+          />
+          <Route
+            path="/profile"
+            element={
+              <Profile
+                updateNewPostText={updateNewPostText}
+                state={state.profilePage}
+                addPost={addPost}
+              />
+            }
+          />
+          ;
+          <Route path="/music" element={<Music />} />
+          <Route path="/news" element={<News />} />
+          <Route path="/settings" element={<Settings />} />
+        </Routes>
       </div>
-    </BrowserRouter>
+    </div>
   );
 }
 

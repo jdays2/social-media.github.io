@@ -7,6 +7,7 @@ function MyPosts({ state, addPost, updateNewPostText }) {
 
   let onPostChange = () => {
     let text = newPostArea.current.value;
+    console.log(text);
     updateNewPostText(text);
   };
 

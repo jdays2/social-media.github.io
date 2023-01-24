@@ -5,11 +5,6 @@ import Post from "./Post/Post";
 function MyPosts({ state, addPost, updateNewPostText }) {
   let newPostArea = React.createRef();
 
-  let addNewPost = () => {
-    addPost(newPostArea.current.value);
-    updateNewPostText("");
-  };
-
   let onPostChange = () => {
     let text = newPostArea.current.value;
     updateNewPostText(text);
@@ -28,7 +23,7 @@ function MyPosts({ state, addPost, updateNewPostText }) {
           />
         </div>
         <div>
-          <button onClick={addNewPost}>Add new post</button>
+          <button onClick={addPost}>Add new post</button>
         </div>
       </div>
       <div className={s.posts}></div>

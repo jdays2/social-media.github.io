@@ -8,10 +8,8 @@ import {
 } from "../../Redux/state";
 
 function Dialogs({ state, dispatch }) {
-  let newMessageArea = React.createRef();
-
-  const updateMessageText = () => {
-    let text = newMessageArea.current.value;
+  const updateMessageText = (e) => {
+    let text = e.target.value;
     dispatch(updateNewMessageActionCreator(text));
     console.log(updateNewMessageActionCreator(text));
   };
@@ -33,10 +31,10 @@ function Dialogs({ state, dispatch }) {
         ))}
         <div>
           <textarea
-            ref={newMessageArea}
             onChange={updateMessageText}
             value={state.newMessageText}
           ></textarea>
+
           <button onClick={sendNewMessage}>Отправить</button>
         </div>
       </div>

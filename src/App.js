@@ -17,7 +17,7 @@ function App({ state, dispatch }) {
         <Routes>
           <Route
             path="/dialogs/*"
-            element={<Dialogs state={state.messagePage} />}
+            element={<Dialogs dispatch={dispatch} state={state.messagePage} />}
           />
           <Route
             path="/profile"

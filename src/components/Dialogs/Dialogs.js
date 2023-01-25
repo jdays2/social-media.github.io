@@ -2,12 +2,22 @@ import DialogItem from "./DialogItem/DialogItem";
 import s from "./Dialogs.module.css";
 import Message from "./Message/Message";
 import React from "react";
+import {
+  updateNewMessageActionCreator,
+  sendNewMessageActionCreator,
+} from "../../Redux/state";
 
-function Dialogs({ state }) {
+function Dialogs({ state, dispatch }) {
   let newMessageArea = React.createRef();
 
-  let sendNewMessage = () => {
-    alert(newMessageArea.current.value);
+  const updateMessageText = () => {
+    let text = newMessageArea.current.value;
+    dispatch(updateNewMessageActionCreator(text));
+    console.log(updateNewMessageActionCreator(text));
+  };
+
+  const sendNewMessage = () => {
+    dispatch(sendNewMessageActionCreator());
   };
 
   return (
@@ -22,7 +32,11 @@ function Dialogs({ state }) {
           <Message key={message.id} message={message.message} />
         ))}
         <div>
-          <textarea ref={newMessageArea}></textarea>
+          <textarea
+            ref={newMessageArea}
+            onChange={updateMessageText}
+            value={state.newMessageText}
+          ></textarea>
           <button onClick={sendNewMessage}>Отправить</button>
         </div>
       </div>

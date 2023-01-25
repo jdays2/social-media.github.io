@@ -11,7 +11,6 @@ function MyPosts({ state, dispatch }) {
 
   let onPostChange = () => {
     let text = newPostArea.current.value;
-    console.log(text);
     dispatch(updateNewPostTextActionCreator(text));
   };
 

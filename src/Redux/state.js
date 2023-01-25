@@ -1,7 +1,7 @@
-const UPDATE_NEW_POST_TEXT = "UPDATE-NEW-POST-TEXT";
-const ADD_POST = "ADD-POST";
-const UPDATE_NEW_MESSAGE = "UPDATE-NEW-MESSAGE";
-const SEND_MESSAGE = "SEND_MESSAGE";
+import profileReducer from "./profilePageReducer";
+import messageReducer from "./messagePageReducer";
+import { UPDATE_NEW_POST_TEXT, ADD_POST } from "./profilePageReducer";
+import { UPDATE_NEW_MESSAGE, SEND_MESSAGE } from "./messagePageReducer";
 
 let store = {
   _state: {
@@ -33,6 +33,7 @@ let store = {
       ],
       newMessageText: "",
     },
+    sidebar: {},
   },
   _callSubscriber() {
     console.log("уведомили...");
@@ -45,30 +46,10 @@ let store = {
   },
 
   dispatch(action) {
-    if (action.type === ADD_POST) {
-      let newPost = {
-        id: 5,
-        message: this._state.profilePage.newPostText,
-        likeCount: 0,
-      };
-      this._state.profilePage.postsData.push(newPost);
-      this._callSubscriber(this._state);
-      this._state.profilePage.newPostText = "";
-    } else if (action.type === UPDATE_NEW_POST_TEXT) {
-      this._state.profilePage.newPostText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === UPDATE_NEW_MESSAGE) {
-      this._state.messagePage.newMessageText = action.newText;
-      this._callSubscriber(this._state);
-    } else if (action.type === SEND_MESSAGE) {
-      let newMessage = {
-        id: 10,
-        message: this._state.messagePage.newMessageText,
-      };
-      this._state.messagePage.messagesData.push(newMessage);
-      this._callSubscriber(this._state);
-      this._state.messagePage.newMessageText = "";
-    }
+    this._state.profilePage = profileReducer(this._state.profilePage, action);
+    this._state.messagePage = messageReducer(this._state.messagePage, action);
+
+    this._callSubscriber(this._state);
   },
 };
 

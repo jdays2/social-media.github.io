@@ -4,7 +4,7 @@ import Post from "./Post/Post";
 import {
   addPostActionCreator,
   updateNewPostTextActionCreator,
-} from "../../../Redux/state";
+} from "../../../Redux/profilePageReducer";
 
 function MyPosts({ state, dispatch }) {
   let newPostArea = React.createRef();

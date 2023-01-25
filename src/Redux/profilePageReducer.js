@@ -10,7 +10,6 @@ const profileReducer = (state, action) => {
         likeCount: 0,
       };
       state.postsData.push(newPost);
-
       state.newPostText = "";
       return state;
     case UPDATE_NEW_POST_TEXT:
@@ -19,6 +18,19 @@ const profileReducer = (state, action) => {
     default:
       return state;
   }
+};
+
+export const addPostActionCreator = () => {
+  return {
+    type: ADD_POST,
+  };
+};
+
+export const updateNewPostTextActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_POST_TEXT,
+    newText: text,
+  };
 };
 
 export default profileReducer;

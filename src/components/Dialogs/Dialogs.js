@@ -5,7 +5,7 @@ import React from "react";
 import {
   updateNewMessageActionCreator,
   sendNewMessageActionCreator,
-} from "../../Redux/state";
+} from "../../Redux/messagePageReducer";
 
 function Dialogs({ state, dispatch }) {
   const updateMessageText = (e) => {

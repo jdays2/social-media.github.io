@@ -12,13 +12,24 @@ export const messageReducer = (state, action) => {
         message: state.newMessageText,
       };
       state.messagesData.push(newMessage);
-
       state.newMessageText = "";
-
       return state;
     default:
       return state;
   }
+};
+
+export const updateNewMessageActionCreator = (text) => {
+  return {
+    type: UPDATE_NEW_MESSAGE,
+    newText: text,
+  };
+};
+
+export const sendNewMessageActionCreator = () => {
+  return {
+    type: SEND_MESSAGE,
+  };
 };
 
 export default messageReducer;

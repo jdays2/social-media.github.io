@@ -8,7 +8,7 @@ import News from "./components/News/News";
 import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
 
-function App({ state, dispatch }) {
+function App({ store, dispatch }) {
   return (
     <div className="app-wrapper">
       <Header />
@@ -17,11 +17,11 @@ function App({ state, dispatch }) {
         <Routes>
           <Route
             path="/dialogs/*"
-            element={<Dialogs dispatch={dispatch} state={state.messagePage} />}
+            element={<Dialogs dispatch={dispatch} store={store.messagePage} />}
           />
           <Route
             path="/profile"
-            element={<Profile dispatch={dispatch} state={state.profilePage} />}
+            element={<Profile dispatch={dispatch} store={store} />}
           />
           ;
           <Route path="/music" element={<Music />} />

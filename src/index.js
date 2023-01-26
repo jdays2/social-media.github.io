@@ -9,7 +9,7 @@ const root = ReactDOM.createRoot(document.getElementById("root"));
 let rerenderEntireThree = (state) => {
   root.render(
     <BrowserRouter>
-      <App state={store.getState()} dispatch={store.dispatch.bind(store)} />
+      <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
     </BrowserRouter>
   );
 };

@@ -31,7 +31,7 @@ export const messageReducer = (state = initialState, action) => {
 
     case SEND_MESSAGE: {
       let newMessage = {
-        id: 10,
+        id: stateCopy.messagesData.length + 1,
         message: state.newMessageText,
       };
       stateCopy.messagesData.push(newMessage);

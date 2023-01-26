@@ -16,11 +16,6 @@ function Dialogs({
     updateMessageText(text);
   };
 
-  const myFnc = () => {
-    console.log(newMessageText);
-  };
-  myFnc();
-
   const onSendMessage = () => {
     sendMessage();
   };

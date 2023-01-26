@@ -7,18 +7,10 @@ import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-let rerenderEntireThree = (state) => {
-  root.render(
-    <BrowserRouter>
-      <Provider store={store}>
-        <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
-      </Provider>
-    </BrowserRouter>
-  );
-};
-
-rerenderEntireThree(store.getState());
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireThree(state);
-});
+root.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
+    </Provider>
+  </BrowserRouter>
+);

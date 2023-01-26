@@ -1,44 +1,29 @@
-import DialogItem from "./DialogItem/DialogItem";
-import s from "./Dialogs.module.css";
-import Message from "./Message/Message";
 import React from "react";
 import {
   updateNewMessageActionCreator,
   sendNewMessageActionCreator,
 } from "../../Redux/messagePageReducer";
+import Dialogs from "./Dialogs";
 
-function Dialogs({ store, dispatch }) {
-  const updateMessageText = (e) => {
-    let text = e.target.value;
+function DialogsComponent({ store, dispatch }) {
+  const updateMessageText = (text) => {
     dispatch(updateNewMessageActionCreator(text));
   };
 
-  const sendNewMessage = () => {
+  const sendMessage = () => {
     dispatch(sendNewMessageActionCreator());
   };
 
+  console.log(store);
   return (
-    <div className={s.dialogs}>
-      <div className={s.dialogs_items}>
-        {store.dialogesData.map((dialog) => (
-          <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
-        ))}
-      </div>
-      <div className={s.messages}>
-        {store.messagesData.map((message) => (
-          <Message key={message.id} message={message.message} />
-        ))}
-        <div>
-          <textarea
-            onChange={updateMessageText}
-            value={store.newMessageText}
-          ></textarea>
-
-          <button onClick={sendNewMessage}>Отправить</button>
-        </div>
-      </div>
-    </div>
+    <Dialogs
+      dialoges={store.messagePage.dialogesData}
+      messages={store.messagePage.messagesData}
+      sendMessage={sendMessage}
+      updateMessageText={updateMessageText}
+      newMessageText={store.messagePage.newMessageText}
+    />
   );
 }
 
-export default Dialogs;
+export default DialogsComponent;

@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./components/Dialogs/Dialogs";
+import DialogsComponent from "./components/Dialogs/DialogsContainer";
 import Header from "./components/Header/Header";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
@@ -17,7 +18,7 @@ function App({ store, dispatch }) {
         <Routes>
           <Route
             path="/dialogs/*"
-            element={<Dialogs dispatch={dispatch} store={store.messagePage} />}
+            element={<DialogsComponent dispatch={dispatch} store={store} />}
           />
           <Route
             path="/profile"

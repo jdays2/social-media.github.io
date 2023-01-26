@@ -6,7 +6,7 @@ function Profile({ store, dispatch }) {
   return (
     <div>
       <ProfileInfo />
-      <MyPostsContainer store={store.profilePage} dispatch={dispatch} />
+      <MyPostsContainer />
     </div>
   );
 }

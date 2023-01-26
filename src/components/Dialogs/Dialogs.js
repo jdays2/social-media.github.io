@@ -12,8 +12,14 @@ function Dialogs({
 }) {
   const onMessageChange = (e) => {
     const text = e.target.value;
+
     updateMessageText(text);
   };
+
+  const myFnc = () => {
+    console.log(newMessageText);
+  };
+  myFnc();
 
   const onSendMessage = () => {
     sendMessage();

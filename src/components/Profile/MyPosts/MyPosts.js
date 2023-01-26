@@ -1,22 +1,17 @@
 import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
-import {
-  addPostActionCreator,
-  updateNewPostTextActionCreator,
-} from "../../../Redux/state";
 
-function MyPosts({ state, dispatch }) {
+function MyPosts({ posts, addPost, updateNewPostText, newPostText }) {
   let newPostArea = React.createRef();
 
   let onPostChange = () => {
     let text = newPostArea.current.value;
-    console.log(text);
-    dispatch(updateNewPostTextActionCreator(text));
+    updateNewPostText(text);
   };
 
-  let addPost = () => {
-    dispatch(addPostActionCreator());
+  let onAddPost = () => {
+    addPost();
   };
 
   return (
@@ -27,16 +22,16 @@ function MyPosts({ state, dispatch }) {
         <div>
           <textarea
             ref={newPostArea}
-            value={state.newPostText}
+            value={newPostText}
             onChange={onPostChange}
           />
         </div>
         <div>
-          <button onClick={addPost}>Add new post</button>
+          <button onClick={onAddPost}>Add new post</button>
         </div>
       </div>
       <div className={s.posts}></div>
-      {state.postsData.map((post) => (
+      {posts.map((post) => (
         <Post key={post.id} message={post.message} likeCount={post.likeCount} />
       ))}
     </div>

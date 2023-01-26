@@ -1,12 +1,12 @@
 import s from "./Profile.module.css";
-import MyPosts from "./MyPosts/MyPosts";
 import ProfileInfo from "./ProfileInfo/ProfileInfo";
+import MyPostsContainer from "./MyPosts/MyPostsContainer";
 
-function Profile({ state, dispatch }) {
+function Profile({ store, dispatch }) {
   return (
     <div>
       <ProfileInfo />
-      <MyPosts state={state} dispatch={dispatch} />
+      <MyPostsContainer store={store.profilePage} dispatch={dispatch} />
     </div>
   );
 }

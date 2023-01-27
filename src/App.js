@@ -2,6 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import Dialogs from "./components/Dialogs/Dialogs";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
+import Users from "./components/Users/Users";
 import Header from "./components/Header/Header";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
@@ -18,7 +19,7 @@ function App({ store, dispatch }) {
         <Routes>
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="/profile" element={<Profile />} />
-          ;
+          <Route path="/Users" element={<Users />} />
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />
           <Route path="/settings" element={<Settings />} />

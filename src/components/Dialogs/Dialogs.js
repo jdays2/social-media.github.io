@@ -12,6 +12,7 @@ function Dialogs({
 }) {
   const onMessageChange = (e) => {
     const text = e.target.value;
+
     updateMessageText(text);
   };
 

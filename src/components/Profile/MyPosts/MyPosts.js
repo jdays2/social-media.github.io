@@ -2,12 +2,14 @@ import React from "react";
 import s from "./MyPosts.module.css";
 import Post from "./Post/Post";
 
-function MyPosts({ posts, addPost, updateNewPostText, newPostText }) {
+function MyPosts({ posts, addPost, updateNewPost, newPostText }) {
   const newPostArea = React.createRef();
+
+  console.log(newPostText);
 
   const onPostChange = () => {
     const text = newPostArea.current.value;
-    updateNewPostText(text);
+    updateNewPost(text);
   };
 
   const onAddPost = () => {

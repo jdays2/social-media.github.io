@@ -3,19 +3,14 @@ import store from "./Redux/redux-store";
 import { BrowserRouter } from "react-router-dom";
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
-let rerenderEntireThree = (state) => {
-  root.render(
-    <BrowserRouter>
-      <App store={store.getState()} dispatch={store.dispatch.bind(store)} />
-    </BrowserRouter>
-  );
-};
-
-rerenderEntireThree(store.getState());
-store.subscribe(() => {
-  let state = store.getState();
-  rerenderEntireThree(state);
-});
+root.render(
+  <BrowserRouter>
+    <Provider store={store}>
+      <App store={store.getState()} />
+    </Provider>
+  </BrowserRouter>
+);

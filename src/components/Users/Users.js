@@ -1,12 +1,11 @@
 import s from "./Users.module.css";
-function Users() {
+function Users(users) {
+  console.lot(users);
   return (
     <div>
-      Users
-      <div>FriendProfile</div>
-      <div>FriendProfile</div>
-      <div>FriendProfile</div>
-      <div>FriendProfile</div>
+      {users.map((u) => (
+        <div>{u.name}</div>
+      ))}
     </div>
   );
 }

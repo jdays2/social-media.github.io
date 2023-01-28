@@ -7,7 +7,7 @@ let initialState = {
     {
       id: 1,
       followed: false,
-      fullName: Dmitry,
+      fullName: "Dmitry",
       status: "I am a boss",
       location: { city: "Brest", country: "Belarus" },
     },
@@ -55,7 +55,6 @@ const usersReducer = (state = initialState, action) => {
         }),
       };
 
-      return users;
     case UNFOLLOW:
       return {
         ...state,

@@ -1,4 +1,4 @@
-import s from "./Userds.module.css";
+import s from "./Users.module.css";
 function Users() {
   return (
     <div>

@@ -3,7 +3,9 @@ import { connect } from "react-redux";
 import { followAC, unfollowAC, setUsersAC } from "../../Redux/usersPageReducer";
 
 const mapStateToProps = (state) => {
-  return {};
+  return {
+    // users: state.usersPage.users,
+  };
 };
 
 const mapDispatchToProps = (dispatch) => {

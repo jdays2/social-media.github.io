@@ -1,3 +1,5 @@
+import { type } from "@testing-library/user-event/dist/type";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -67,27 +69,32 @@ const usersPageReducer = (state = initialState, action) => {
       };
     case SET_USERS:
       return { ...state, users: [...state.users, ...action.users] };
+
+    default:
+      console.log(state);
+      return state;
   }
 };
 
 export const followAC = (userId) => {
-  {
-    type: FOLLOW;
-    userId;
-  }
+  return {
+    type: FOLLOW,
+    userId,
+  };
 };
 
 export const unfollowAC = (userId) => {
-  {
-    type: UNFOLLOW;
-    userId;
-  }
+  return {
+    type: UNFOLLOW,
+    userId,
+  };
 };
 
 export const setUsersAC = (users) => {
-  {
-    type: SET_USERS, users;
-  }
+  return {
+    type: SET_USERS,
+    users,
+  };
 };
 
 export default usersPageReducer;

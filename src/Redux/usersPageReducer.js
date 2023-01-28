@@ -42,7 +42,7 @@ let initialState = {
   ],
 };
 
-const usersReducer = (state = initialState, action) => {
+const usersPageReducer = (state = initialState, action) => {
   switch (action.type) {
     case FOLLOW:
       return {
@@ -89,3 +89,5 @@ export const setUsersAC = (users) => {
     type: SET_USERS, users;
   }
 };
+
+export default usersPageReducer;

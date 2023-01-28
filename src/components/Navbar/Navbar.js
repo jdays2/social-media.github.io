@@ -58,6 +58,18 @@ function Navbar() {
           src="https://img.icons8.com/windows/512/home.png"
         />
         <NavLink
+          to="/Users"
+          className={({ isActive }) => (isActive ? s.active : undefined)}
+        >
+          FIND USERS
+        </NavLink>
+      </div>
+      <div className={s.item}>
+        <img
+          className={s.icon}
+          src="https://img.icons8.com/windows/512/home.png"
+        />
+        <NavLink
           to="/settings"
           className={({ isActive }) => (isActive ? s.active : undefined)}
         >

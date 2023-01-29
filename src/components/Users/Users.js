@@ -13,7 +13,7 @@ function Users({ users, followUser, unfollowUser, setUsers }) {
         return (
           <div className={s.userCard}>
             <span>
-              <div>
+              <div className={s.userLogo}>
                 <img
                   className={s.img}
                   src={
@@ -22,8 +22,7 @@ function Users({ users, followUser, unfollowUser, setUsers }) {
                       : u.photos.small
                   }
                 />
-              </div>
-              <div>
+
                 {u.followed ? (
                   <button
                     onClick={() => {
@@ -49,8 +48,8 @@ function Users({ users, followUser, unfollowUser, setUsers }) {
                 <div>{u.status}</div>
               </span>
               <span>
-                {/* <div>{u.location.city}</div>
-                <div>{u.location.country}</div> */}
+                <div>{"u.location.city"}</div>
+                <div>{"u.location.country"}</div>
               </span>
             </span>
           </div>

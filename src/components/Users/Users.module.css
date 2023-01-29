@@ -9,10 +9,16 @@
   display: flex;
 }
 
+.userLogo {
+  display: flex;
+  flex-direction: column;
+}
+
 .img {
   width: 70px;
   height: 70px;
   border-radius: 40px;
   border: 2px solid gold;
   padding: 4px;
+  margin-bottom: 20px;
 }

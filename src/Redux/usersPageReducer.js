@@ -1,10 +1,10 @@
-import { type } from "@testing-library/user-event/dist/type";
-
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
-let initialState = {};
+let initialState = {
+  users: [],
+};
 
 const usersPageReducer = (state = initialState, action) => {
   switch (action.type) {

@@ -1,47 +1,9 @@
-import { type } from "@testing-library/user-event/dist/type";
-
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 
 let initialState = {
-  users: [
-    {
-      id: 1,
-      followed: false,
-      fullName: "Dmitry",
-      status: "I am a boss",
-      location: { city: "Brest", country: "Belarus" },
-    },
-    {
-      id: 2,
-      followed: true,
-      ffullName: "Micky",
-      status: "I am a boss",
-      location: { city: "Zabolottye", country: "Urkain" },
-    },
-    {
-      id: 3,
-      followed: true,
-      fullName: "Kizya",
-      status: "I am a boss",
-      location: { city: "Kobrin", country: "Belarus" },
-    },
-    {
-      id: 4,
-      followed: false,
-      fullName: "Pedro",
-      status: "I am a boss",
-      location: { city: "Brest", country: "Belarus" },
-    },
-    {
-      id: 5,
-      followed: true,
-      fullName: "TheLastOne",
-      status: "im lastest laster",
-      location: { city: "Derevnya", country: "Belarus" },
-    },
-  ],
+  users: [],
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -71,7 +33,6 @@ const usersPageReducer = (state = initialState, action) => {
       return { ...state, users: [...state.users, ...action.users] };
 
     default:
-      console.log(state);
       return state;
   }
 };

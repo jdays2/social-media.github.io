@@ -1,0 +1,18 @@
+.wrapper {
+  display: flex;
+  padding: 20px;
+  margin: 0 auto;
+}
+
+.userCard {
+  margin: 20px;
+  display: flex;
+}
+
+.img {
+  width: 70px;
+  height: 70px;
+  border-radius: 40px;
+  border: 2px solid gold;
+  padding: 4px;
+}

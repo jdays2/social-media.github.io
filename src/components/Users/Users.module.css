@@ -4,6 +4,11 @@
   margin: 0 auto;
 }
 
+.current {
+  color: gold;
+  font-weight: bold;
+}
+
 .userCard {
   margin: 20px;
   display: flex;

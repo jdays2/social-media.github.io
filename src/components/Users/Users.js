@@ -1,15 +1,31 @@
-import axios from "axios";
 import s from "./Users.module.css";
-function Users({ users, followUser, unfollowUser, setUsers }) {
-  if (users.length === 0) {
-    axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
-      .then((response) => setUsers(response.data.items));
+
+function Users(props) {
+  let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
+
+  let pages = [];
+
+  for (let i = 1; pagesCount >= i; i++) {
+    pages.push(i);
   }
-  console.log(users);
   return (
     <div className={s.wrapper}>
-      {users.map((u) => {
+      <div>
+        {pages.map((p) => {
+          return (
+            <span
+              onClick={() => {
+                props.onChangedPage(p);
+              }}
+              className={props.currentPage === p ? s.current : null}
+            >
+              {p}
+            </span>
+          );
+        })}
+      </div>
+
+      {props.users.map((u) => {
         return (
           <div className={s.userCard}>
             <span>
@@ -26,7 +42,7 @@ function Users({ users, followUser, unfollowUser, setUsers }) {
                 {u.followed ? (
                   <button
                     onClick={() => {
-                      unfollowUser(u.id);
+                      props.unfollowUser(u.id);
                     }}
                   >
                     Unfollow
@@ -34,7 +50,7 @@ function Users({ users, followUser, unfollowUser, setUsers }) {
                 ) : (
                   <button
                     onClick={() => {
-                      followUser(u.id);
+                      props.followUser(u.id);
                     }}
                   >
                     Follow

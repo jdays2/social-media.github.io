@@ -7,7 +7,7 @@ let initialState = {
   users: [],
   pageSize: 4,
   totalUserCount: 30, //Беру из головы, вместо api, потому как там totalUserCount > 22k (T_T)
-  currentPage: 3,
+  currentPage: 1,
 };
 
 const usersPageReducer = (state = initialState, action) => {

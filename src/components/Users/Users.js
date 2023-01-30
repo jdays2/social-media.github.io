@@ -17,7 +17,7 @@ function Users(props) {
               onClick={() => {
                 props.onChangedPage(p);
               }}
-              className={props.currentPage === p && s.current}
+              className={props.currentPage === p ? s.current : null}
             >
               {p}
             </span>

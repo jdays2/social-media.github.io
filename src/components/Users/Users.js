@@ -3,13 +3,22 @@ import React from "react";
 import s from "./Users.module.css";
 
 class Users extends React.Component {
-  componentDidMount() {
+  usersPageUpdate = () => {
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
       )
       .then((response) => this.props.setUsers(response.data.items));
+  };
+
+  componentDidMount() {
+    this.usersPageUpdate();
   }
+
+  onChangedPage = (pageNumber) => {
+    this.props.setCurrentPage(pageNumber);
+    this.usersPageUpdate();
+  };
 
   render() {
     let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize);
@@ -19,14 +28,15 @@ class Users extends React.Component {
     for (let i = 1; pagesCount >= i; i++) {
       pages.push(i);
     }
+
     return (
       <div className={s.wrapper}>
         <div>
           {pages.map((p) => {
             return (
               <span
-                onClick={() => {
-                  this.props.setPage(p);
+                onClick={(p) => {
+                  onChangedPage(p);
                 }}
                 className={this.props.currentPage === p && s.current}
               >

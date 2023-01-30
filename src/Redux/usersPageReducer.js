@@ -65,7 +65,7 @@ export const setUsersAC = (users) => {
   };
 };
 
-export const setCurrentPage = (currentPage) => {
+export const setCurrentPageAC = (currentPage) => {
   return {
     type: SET_CURRENT_PAGE,
     currentPage,

@@ -4,7 +4,7 @@ import {
   followAC,
   unfollowAC,
   setUsersAC,
-  setCurrentPage,
+  setCurrentPageAC,
 } from "../../Redux/usersPageReducer";
 
 const mapStateToProps = (state) => {
@@ -27,8 +27,8 @@ const mapDispatchToProps = (dispatch) => {
     setUsers: (users) => {
       dispatch(setUsersAC(users));
     },
-    setPage: (currentPage) => {
-      dispatch(setCurrentPage(currentPage));
+    setCurrentPage: (currentPage) => {
+      dispatch(setCurrentPageAC(currentPage));
     },
   };
 };

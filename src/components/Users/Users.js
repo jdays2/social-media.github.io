@@ -5,13 +5,37 @@ import s from "./Users.module.css";
 class Users extends React.Component {
   componentDidMount() {
     axios
-      .get("https://social-network.samuraijs.com/api/1.0/users")
+      .get(
+        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
+      )
       .then((response) => this.props.setUsers(response.data.items));
   }
 
   render() {
+    let pagesCount = Math.ceil(this.props.totalUserCount / this.props.pageSize);
+
+    let pages = [];
+
+    for (let i = 1; pagesCount >= i; i++) {
+      pages.push(i);
+    }
     return (
       <div className={s.wrapper}>
+        <div>
+          {pages.map((p) => {
+            return (
+              <span
+                onClick={() => {
+                  this.props.setPage(p);
+                }}
+                className={this.props.currentPage === p && s.current}
+              >
+                {p}
+              </span>
+            );
+          })}
+        </div>
+
         {this.props.users.map((u) => {
           return (
             <div className={s.userCard}>

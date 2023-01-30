@@ -6,7 +6,7 @@ const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 let initialState = {
   users: [],
   pageSize: 4,
-  totalUserCount: 30,
+  totalUserCount: 30, //Беру из головы, вместо api, потому как там totalUserCount > 22k (T_T)
   currentPage: 3,
 };
 

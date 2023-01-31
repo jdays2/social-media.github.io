@@ -31,5 +31,5 @@ export const setUserDataAC = (id, login, email) => {
     },
   };
 };
-debugger;
+
 export default authReducer;

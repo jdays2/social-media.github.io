@@ -14,17 +14,19 @@ class HeaderContainer extends React.Component {
         if (response.data.resultCode === 0) {
           let { id, login, email } = response.data.data;
           this.props.setUserDataAC(id, login, email);
-          console.log(id, login, email);
         }
       });
   }
   render() {
-    return <Header />;
+    return <Header data={{ ...this.props }} />;
   }
 }
 
-const mapStateToProps = () => {
-  return {};
+const mapStateToProps = (state) => {
+  return {
+    isLogin: state.auth.isLogin,
+    login: state.auth.login,
+  };
 };
 
 export default connect(mapStateToProps, { setUserDataAC })(HeaderContainer);

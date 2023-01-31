@@ -1,7 +1,7 @@
 const SET_USER_DATA = "SET_USER_DATA";
 
 let initialState = {
-  userId: null,
+  Id: null,
   email: null,
   login: null,
   isLogin: false,
@@ -31,5 +31,5 @@ export const setUserDataAC = (id, login, email) => {
     },
   };
 };
-
+debugger;
 export default authReducer;

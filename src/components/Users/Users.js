@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import s from "./Users.module.css";
 
 function Users(props) {
@@ -30,19 +31,21 @@ function Users(props) {
           <div className={s.userCard}>
             <span>
               <div className={s.userLogo}>
-                <img
-                  className={s.img}
-                  src={
-                    u.photos.small === null
-                      ? "https://mustact.by/img/empty/artist.avatar.png"
-                      : u.photos.small
-                  }
-                />
+                <NavLink to={"/profile/" + u.id}>
+                  <img
+                    className={s.img}
+                    src={
+                      u.photos.small === null
+                        ? "https://mustact.by/img/empty/artist.avatar.png"
+                        : u.photos.small
+                    }
+                  />
+                </NavLink>
 
                 {u.followed ? (
                   <button
                     onClick={() => {
-                      props.unfollowUser(u.id);
+                      props.unfollow(u.id);
                     }}
                   >
                     Unfollow
@@ -50,7 +53,7 @@ function Users(props) {
                 ) : (
                   <button
                     onClick={() => {
-                      props.followUser(u.id);
+                      props.follow(u.id);
                     }}
                   >
                     Follow

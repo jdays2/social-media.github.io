@@ -5,8 +5,6 @@ import Post from "./Post/Post";
 function MyPosts({ posts, addPost, updateNewPost, newPostText }) {
   const newPostArea = React.createRef();
 
-  console.log(newPostText);
-
   const onPostChange = () => {
     const text = newPostArea.current.value;
     updateNewPost(text);

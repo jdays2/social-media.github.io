@@ -2,8 +2,18 @@
   grid-area: h;
   background: #0d0d0d;
   box-shadow: 0px 5px 22px rgba(0, 0, 0, 0.25);
+  display: flex;
+  justify-content: space-between;
 }
 
-.header img {
+.logo {
   width: 54px;
+  height: 54px;
+  margin: 10px;
+}
+
+.loginImg {
+  width: 40px;
+  height: 40px;
+  margin: 10px;
 }

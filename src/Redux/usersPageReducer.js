@@ -2,10 +2,12 @@ const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
+const SET_USER_PROFILE = "SET_USER_PROFILE";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
 
 let initialState = {
   users: [],
+  profile: {},
   pageSize: 4,
   totalUserCount: 30, //Беру из головы, вместо api, потому как там totalUserCount > 22k (T_T)
   currentPage: 1,
@@ -42,6 +44,8 @@ const usersPageReducer = (state = initialState, action) => {
       return { ...state, currentPage: action.currentPage };
     case TOGGLE_IS_FETCHING:
       return { ...state, isFetching: action.isFetching };
+    case SET_USER_PROFILE:
+      return { ...state, profile: action.userProfile };
 
     default:
       return state;
@@ -80,6 +84,13 @@ export const setToggleIsFetchingAC = (isFetching) => {
   return {
     type: TOGGLE_IS_FETCHING,
     isFetching,
+  };
+};
+
+export const setUserProfileAC = (userProfile) => {
+  return {
+    type: SET_USER_PROFILE,
+    userProfile,
   };
 };
 

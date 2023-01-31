@@ -22,53 +22,32 @@ const mapStateToProps = (state) => {
   };
 };
 
-const mapDispatchToProps = (dispatch) => {
-  return {
-    unfollowUser: (userId) => {
-      dispatch(unfollowAC(userId));
-    },
-    followUser: (userId) => {
-      dispatch(followAC(userId));
-    },
-    setUsers: (users) => {
-      dispatch(setUsersAC(users));
-    },
-    setCurrentPage: (currentPage) => {
-      dispatch(setCurrentPageAC(currentPage));
-    },
-    toggleIsFetching: (isFetching) => {
-      dispatch(setToggleIsFetchingAC(isFetching));
-    },
-  };
-};
-
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.toggleIsFetching(true);
+    this.props.setToggleIsFetchingAC(true);
 
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
       )
       .then((response) => {
-        this.props.toggleIsFetching(false);
-        this.props.setUsers(response.data.items);
+        this.props.setToggleIsFetchingAC(false);
+        this.props.setUsersAC(response.data.items);
       });
   }
 
   onChangedPage = (pageNumber) => {
-    this.props.toggleIsFetching(true);
-    console.log(this.props.isFetching);
-    this.props.setCurrentPage(pageNumber);
+    this.props.setToggleIsFetchingAC(true);
+    this.props.setCurrentPageAC(pageNumber);
 
     axios
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
       )
       .then((response) => {
-        this.props.toggleIsFetching(false);
+        this.props.setToggleIsFetchingAC(false);
         console.log(this.props.isFetching);
-        this.props.setUsers(response.data.items);
+        this.props.setUsersAC(response.data.items);
       });
   };
 
@@ -78,8 +57,8 @@ class UsersContainer extends React.Component {
         {this.props.isFetching ? <Preloader /> : null}
         <Users
           onChangedPage={this.onChangedPage}
-          unfollowUser={this.props.unfollowUser}
-          followUser={this.props.followUser}
+          unfollow={this.props.unfollowAC}
+          follow={this.props.followAC}
           totalUserCount={this.props.totalUserCount}
           pageSize={this.props.pageSize}
           users={this.props.users}
@@ -90,4 +69,10 @@ class UsersContainer extends React.Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(UsersContainer);
+export default connect(mapStateToProps, {
+  unfollowAC,
+  followAC,
+  setUsersAC,
+  setCurrentPageAC,
+  setToggleIsFetchingAC,
+})(UsersContainer);

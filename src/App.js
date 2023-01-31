@@ -7,8 +7,8 @@ import Header from "./components/Header/Header";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
-import Profile from "./components/Profile/Profile";
 import Settings from "./components/Settings/Settings";
+import ProfileContainer from "./components/Profile/ProfileContainer";
 
 function App({ store, dispatch }) {
   return (
@@ -18,7 +18,7 @@ function App({ store, dispatch }) {
       <div className="app-wrapper-content">
         <Routes>
           <Route path="/dialogs/*" element={<DialogsContainer />} />
-          <Route path="/profile" element={<Profile />} />
+          <Route path="/profile/*" element={<ProfileContainer />} />
           <Route path="/users" element={<UsersContainer />} />
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />

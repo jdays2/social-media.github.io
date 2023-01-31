@@ -13,6 +13,7 @@ const authReducer = (state = initialState, action) => {
       return {
         ...state,
         ...action.data,
+        isLogin: true,
       };
 
     default:
@@ -20,13 +21,13 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setUserDataAC = (userId, email, login) => {
+export const setUserDataAC = (id, login, email) => {
   return {
     type: SET_USER_DATA,
     data: {
-      userId,
-      email,
+      id,
       login,
+      email,
     },
   };
 };

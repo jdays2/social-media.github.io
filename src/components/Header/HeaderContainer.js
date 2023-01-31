@@ -6,9 +6,15 @@ import axios from "axios";
 
 class HeaderContainer extends React.Component {
   componentDidMount() {
-    axios.get(``).then((response) => {
-      setUserDataAC(response.data);
-    });
+    axios
+      .get(`https://social-network.samuraijs.com/api/1.0/auth/me`, {
+        withCredentials: true,
+      })
+      .then((response) => {
+        let { id, login, email } = response.data.data;
+        this.props.setUserDataAC(id, login, email);
+        console.log(id, login, email);
+      });
   }
   render() {
     return <Header />;

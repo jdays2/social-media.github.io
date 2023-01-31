@@ -10,7 +10,7 @@ import Settings from "./components/Settings/Settings";
 import ProfileContainer from "./components/Profile/ProfileContainer";
 import HeaderContainer from "./components/Header/HeaderContainer";
 
-function App({ store, dispatch }) {
+function App({}) {
   return (
     <div className="app-wrapper">
       <Navbar />

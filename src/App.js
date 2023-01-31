@@ -18,7 +18,7 @@ function App({ store, dispatch }) {
       <div className="app-wrapper-content">
         <Routes>
           <Route path="/dialogs/*" element={<DialogsContainer />} />
-          <Route path="/profile/*" element={<ProfileContainer />} />
+          <Route path="profile/:id?" element={<ProfileContainer />} />
           <Route path="/users" element={<UsersContainer />} />
           <Route path="/music" element={<Music />} />
           <Route path="/news" element={<News />} />

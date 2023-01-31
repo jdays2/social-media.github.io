@@ -44,9 +44,10 @@ class UsersContainer extends React.Component {
       .get(
         `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
       )
+
       .then((response) => {
         this.props.setToggleIsFetchingAC(false);
-        console.log(this.props.isFetching);
+        console.log(response);
         this.props.setUsersAC(response.data.items);
       });
   };

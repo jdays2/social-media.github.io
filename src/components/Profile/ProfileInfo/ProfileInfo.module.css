@@ -1,8 +1,25 @@
-.cont img {
+.backgroundImg {
   width: 100%;
   height: 300px;
 }
 
 .discriptionBlock {
   padding: 10px;
+}
+
+.profileAvatar {
+  width: 100px;
+  height: 100px;
+}
+
+.userName {
+  font-size: 24px;
+  font-weight: bold;
+  color: gold;
+}
+
+.userAbout {
+  font-size: 18px;
+  font-style: italic;
+  color: white;
 }

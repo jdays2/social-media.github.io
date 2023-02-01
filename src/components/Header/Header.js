@@ -3,8 +3,6 @@ import loginImg from "./../../assets/images/login.svg";
 import { NavLink } from "react-router-dom";
 
 function Header(props) {
-  console.log(props.data.isLogin);
-
   return (
     <header className={s.header}>
       <img

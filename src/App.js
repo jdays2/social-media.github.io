@@ -2,7 +2,7 @@ import { Route, Routes } from "react-router-dom";
 import "./App.css";
 import DialogsContainer from "./components/Dialogs/DialogsContainer";
 import UsersContainer from "./components/Users/UsersContainer";
-import Header from "./components/Header/Header";
+import Login from "./components/Login/Login";
 import Music from "./components/Music/Music";
 import Navbar from "./components/Navbar/Navbar";
 import News from "./components/News/News";
@@ -17,6 +17,7 @@ function App({}) {
       <HeaderContainer />
       <div className="app-wrapper-content">
         <Routes>
+          <Route path="/login" element={<Login />} />
           <Route path="/dialogs/*" element={<DialogsContainer />} />
           <Route path="profile/:id?" element={<ProfileContainer />} />
           <Route path="/users" element={<UsersContainer />} />

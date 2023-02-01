@@ -22,7 +22,7 @@ const authReducer = (state = initialState, action) => {
   }
 };
 
-export const setUserDataAC = (id, login, email) => {
+export const setAuthUserDataAC = (id, login, email) => {
   return {
     type: SET_USER_DATA,
     data: {
@@ -38,7 +38,7 @@ export const getAuthTC = () => {
     usersAPI.getAuth().then((data) => {
       if (data.resultCode === 0) {
         let { id, login, email } = data.data;
-        dispatch(setUserDataAC(id, login, email));
+        dispatch(setAuthUserDataAC(id, login, email));
       }
     });
   };

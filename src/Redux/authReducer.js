@@ -1,3 +1,4 @@
+import { usersAPI } from "../DAL/api";
 const SET_USER_DATA = "SET_USER_DATA";
 
 let initialState = {
@@ -29,6 +30,17 @@ export const setUserDataAC = (id, login, email) => {
       login,
       email,
     },
+  };
+};
+
+export const getAuthTC = () => {
+  return (dispatch) => {
+    usersAPI.getAuth().then((data) => {
+      if (data.resultCode === 0) {
+        let { id, login, email } = data.data;
+        dispatch(setUserDataAC(id, login, email));
+      }
+    });
   };
 };
 

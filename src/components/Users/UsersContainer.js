@@ -5,12 +5,13 @@ import {
   setUsersAC,
   setCurrentPageAC,
   setToggleIsFetchingAC,
+  setToggleFollowingInProgressAC,
 } from "../../Redux/usersPageReducer";
 import axios from "axios";
 import React from "react";
 import Users from "./Users";
-
 import Preloader from "./../commands/Preloader/Preloader";
+import { usersAPI } from "../../DAL/api";
 
 const mapStateToProps = (state) => {
   return {
@@ -19,6 +20,7 @@ const mapStateToProps = (state) => {
     totalUserCount: state.usersPage.totalUserCount,
     currentPage: state.usersPage.currentPage,
     isFetching: state.usersPage.isFetching,
+    followingInProgress: state.usersPage.followingInProgress,
   };
 };
 
@@ -26,13 +28,11 @@ class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.setToggleIsFetchingAC(true);
 
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`
-      )
-      .then((response) => {
+    usersAPI
+      .getUsers(this.props.pageSize, this.props.currentPage)
+      .then((data) => {
         this.props.setToggleIsFetchingAC(false);
-        this.props.setUsersAC(response.data.items);
+        this.props.setUsersAC(data.items);
       });
   }
 
@@ -40,16 +40,10 @@ class UsersContainer extends React.Component {
     this.props.setToggleIsFetchingAC(true);
     this.props.setCurrentPageAC(pageNumber);
 
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`
-      )
-
-      .then((response) => {
-        this.props.setToggleIsFetchingAC(false);
-        console.log(response);
-        this.props.setUsersAC(response.data.items);
-      });
+    usersAPI.getUsers(this.props.pageSize, pageNumber).then((data) => {
+      this.props.setToggleIsFetchingAC(false);
+      this.props.setUsersAC(data.items);
+    });
   };
 
   render() {
@@ -64,6 +58,10 @@ class UsersContainer extends React.Component {
           pageSize={this.props.pageSize}
           users={this.props.users}
           currentPage={this.props.currentPage}
+          setToggleFollowingInProgress={
+            this.props.setToggleFollowingInProgressAC
+          }
+          followingInProgress={this.props.followingInProgress}
         />
       </>
     );
@@ -76,4 +74,5 @@ export default connect(mapStateToProps, {
   setUsersAC,
   setCurrentPageAC,
   setToggleIsFetchingAC,
+  setToggleFollowingInProgressAC,
 })(UsersContainer);

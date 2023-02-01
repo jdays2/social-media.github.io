@@ -1,6 +1,8 @@
 import { NavLink } from "react-router-dom";
 import s from "./Users.module.css";
 
+import { usersAPI } from "../../DAL/api";
+
 function Users(props) {
   let pagesCount = Math.ceil(props.totalUserCount / props.pageSize);
 
@@ -44,16 +46,34 @@ function Users(props) {
 
                 {u.followed ? (
                   <button
+                    disabled={props.followingInProgress.some(
+                      (id) => id === u.id
+                    )}
                     onClick={() => {
-                      props.unfollow(u.id);
+                      props.setToggleFollowingInProgress(true, u.id);
+                      usersAPI.unfollowUser(u.id).then((data) => {
+                        if (data.resultCode === 0) {
+                          props.unfollow(u.id);
+                        }
+                        props.setToggleFollowingInProgress(false, u.id);
+                      });
                     }}
                   >
                     Unfollow
                   </button>
                 ) : (
                   <button
+                    disabled={props.followingInProgress.some(
+                      (id) => id === u.id
+                    )}
                     onClick={() => {
-                      props.follow(u.id);
+                      props.setToggleFollowingInProgress(true, u.id);
+                      usersAPI.followUser(u.id).then((data) => {
+                        if (data.resultCode === 0) {
+                          props.follow(u.id);
+                        }
+                        props.setToggleFollowingInProgress(false, u.id);
+                      });
                     }}
                   >
                     Follow

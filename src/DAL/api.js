@@ -19,18 +19,18 @@ export const usersAPI = {
       });
   },
   getProfile(userId) {
-    return instanse.get(`profile/${userId}`);
-  },
-  getProfile(userId) {
-    return instanse.get(`profile/${userId}`);
-  },
-  followUser(id) {
-    return instanse.post(`follow/${id}`).then((response) => {
+    return instanse.get(`profile/${userId}`).then((response) => {
       return response.data;
     });
   },
-  unfollowUser(id) {
-    return instanse.delete(`follow/${id}`).then((response) => {
+  followUser(userId) {
+    return instanse.post(`follow/${userId}`).then((response) => {
+      return response.data;
+    });
+  },
+  unfollowUser(userId) {
+    return instanse.delete(`follow/${userId}`).then((response) => {
+      console.log(response);
       return response.data;
     });
   },

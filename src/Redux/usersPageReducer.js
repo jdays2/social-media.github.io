@@ -1,3 +1,5 @@
+import { usersAPI } from "../DAL/api";
+
 const FOLLOW = "FOLLOW";
 const UNFOLLOW = "UNFOLLOW";
 const SET_USERS = "SET_USERS";
@@ -108,6 +110,49 @@ export const setToggleFollowingInProgressAC = (isFetching, userId) => {
     type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,
     isFetching,
     userId,
+  };
+};
+
+export const getUsersTC = (pageSize, currentPage) => {
+  return (dispatch) => {
+    dispatch(setToggleIsFetchingAC(true));
+
+    usersAPI.getUsers(pageSize, currentPage).then((data) => {
+      dispatch(setToggleIsFetchingAC(false));
+      dispatch(setUsersAC(data.items));
+    });
+  };
+};
+
+export const unfollowTC = (userId) => {
+  return (dispatch) => {
+    dispatch(setToggleFollowingInProgressAC(true, userId));
+    usersAPI.unfollowUser(userId).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(unfollowAC(userId));
+      }
+      dispatch(setToggleFollowingInProgressAC(false, userId));
+    });
+  };
+};
+
+export const followTC = (userId) => {
+  return (dispatch) => {
+    dispatch(setToggleFollowingInProgressAC(true, userId));
+    usersAPI.followUser(userId).then((data) => {
+      if (data.resultCode === 0) {
+        dispatch(followAC(userId));
+      }
+      dispatch(setToggleFollowingInProgressAC(false, userId));
+    });
+  };
+};
+
+export const getProfileTC = (id) => {
+  return (dispatch) => {
+    usersAPI.getProfile(id).then((data) => {
+      dispatch(setUserProfileAC(data));
+    });
   };
 };
 

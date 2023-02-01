@@ -2,16 +2,15 @@ import { connect } from "react-redux";
 import {
   followAC,
   unfollowAC,
-  setUsersAC,
   setCurrentPageAC,
-  setToggleIsFetchingAC,
   setToggleFollowingInProgressAC,
+  getUsersTC,
+  unfollowTC,
+  followTC,
 } from "../../Redux/usersPageReducer";
-import axios from "axios";
 import React from "react";
 import Users from "./Users";
 import Preloader from "./../commands/Preloader/Preloader";
-import { usersAPI } from "../../DAL/api";
 
 const mapStateToProps = (state) => {
   return {
@@ -26,24 +25,12 @@ const mapStateToProps = (state) => {
 
 class UsersContainer extends React.Component {
   componentDidMount() {
-    this.props.setToggleIsFetchingAC(true);
-
-    usersAPI
-      .getUsers(this.props.pageSize, this.props.currentPage)
-      .then((data) => {
-        this.props.setToggleIsFetchingAC(false);
-        this.props.setUsersAC(data.items);
-      });
+    this.props.getUsersTC(this.props.pageSize, this.props.currentPage);
   }
 
   onChangedPage = (pageNumber) => {
-    this.props.setToggleIsFetchingAC(true);
     this.props.setCurrentPageAC(pageNumber);
-
-    usersAPI.getUsers(this.props.pageSize, pageNumber).then((data) => {
-      this.props.setToggleIsFetchingAC(false);
-      this.props.setUsersAC(data.items);
-    });
+    this.props.getUsersTC(pageNumber, this.props.currentPage);
   };
 
   render() {
@@ -52,8 +39,6 @@ class UsersContainer extends React.Component {
         {this.props.isFetching ? <Preloader /> : null}
         <Users
           onChangedPage={this.onChangedPage}
-          unfollow={this.props.unfollowAC}
-          follow={this.props.followAC}
           totalUserCount={this.props.totalUserCount}
           pageSize={this.props.pageSize}
           users={this.props.users}
@@ -62,17 +47,21 @@ class UsersContainer extends React.Component {
             this.props.setToggleFollowingInProgressAC
           }
           followingInProgress={this.props.followingInProgress}
+          unfollow={this.props.unfollowTC}
+          follow={this.props.followTC}
         />
       </>
     );
+    debugger;
   }
 }
 
 export default connect(mapStateToProps, {
   unfollowAC,
   followAC,
-  setUsersAC,
   setCurrentPageAC,
-  setToggleIsFetchingAC,
   setToggleFollowingInProgressAC,
+  getUsersTC,
+  unfollowTC,
+  followTC,
 })(UsersContainer);

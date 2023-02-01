@@ -4,6 +4,7 @@ const SET_USERS = "SET_USERS";
 const SET_CURRENT_PAGE = "SET_CURRENT_PAGE";
 const SET_USER_PROFILE = "SET_USER_PROFILE";
 const TOGGLE_IS_FETCHING = "TOGGLE_IS_FETCHING";
+const TOGGLE_IS_FOLLOWING_IN_PROGRESS = "TOGGLE_IS_FOLLOWING_IN_PROGRESS";
 
 let initialState = {
   users: [],
@@ -12,6 +13,7 @@ let initialState = {
   totalUserCount: 30, //Беру из головы, вместо api, потому как там totalUserCount > 22k (T_T)
   currentPage: 1,
   isFetching: false,
+  followingInProgress: false,
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -46,6 +48,8 @@ const usersPageReducer = (state = initialState, action) => {
       return { ...state, isFetching: action.isFetching };
     case SET_USER_PROFILE:
       return { ...state, profile: action.userProfile };
+    case TOGGLE_IS_FOLLOWING_IN_PROGRESS:
+      return { ...state, followingInProgress: action.isFetching };
 
     default:
       return state;
@@ -91,6 +95,13 @@ export const setUserProfileAC = (userProfile) => {
   return {
     type: SET_USER_PROFILE,
     userProfile,
+  };
+};
+
+export const setToggleFollowingInProgressAC = (isFetching) => {
+  return {
+    type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,
+    isFetching,
   };
 };
 

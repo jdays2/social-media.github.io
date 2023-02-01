@@ -4,7 +4,7 @@ import { NavLink } from "react-router-dom";
 
 function Header(props) {
   console.log(props.data.isLogin);
-  debugger;
+
   return (
     <header className={s.header}>
       <img

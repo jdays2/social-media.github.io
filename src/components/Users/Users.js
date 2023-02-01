@@ -1,6 +1,6 @@
 import { NavLink } from "react-router-dom";
 import s from "./Users.module.css";
-import axios from "axios";
+
 import { usersAPI } from "../../DAL/api";
 
 function Users(props) {
@@ -46,14 +46,16 @@ function Users(props) {
 
                 {u.followed ? (
                   <button
-                    disabled={props.followingInProgress}
+                    disabled={props.followingInProgress.some(
+                      (id) => id === u.id
+                    )}
                     onClick={() => {
-                      props.setToggleFollowingInProgress(true);
+                      props.setToggleFollowingInProgress(true, u.id);
                       usersAPI.unfollowUser(u.id).then((data) => {
                         if (data.resultCode === 0) {
                           props.unfollow(u.id);
                         }
-                        props.setToggleFollowingInProgress(false);
+                        props.setToggleFollowingInProgress(false, u.id);
                       });
                     }}
                   >
@@ -61,14 +63,16 @@ function Users(props) {
                   </button>
                 ) : (
                   <button
-                    disabled={props.followingInProgress}
+                    disabled={props.followingInProgress.some(
+                      (id) => id === u.id
+                    )}
                     onClick={() => {
-                      props.setToggleFollowingInProgress(true);
+                      props.setToggleFollowingInProgress(true, u.id);
                       usersAPI.followUser(u.id).then((data) => {
                         if (data.resultCode === 0) {
                           props.follow(u.id);
                         }
-                        props.setToggleFollowingInProgress(false);
+                        props.setToggleFollowingInProgress(false, u.id);
                       });
                     }}
                   >

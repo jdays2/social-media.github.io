@@ -13,7 +13,7 @@ let initialState = {
   totalUserCount: 30, //Беру из головы, вместо api, потому как там totalUserCount > 22k (T_T)
   currentPage: 1,
   isFetching: false,
-  followingInProgress: false,
+  followingInProgress: [],
 };
 
 const usersPageReducer = (state = initialState, action) => {
@@ -49,7 +49,12 @@ const usersPageReducer = (state = initialState, action) => {
     case SET_USER_PROFILE:
       return { ...state, profile: action.userProfile };
     case TOGGLE_IS_FOLLOWING_IN_PROGRESS:
-      return { ...state, followingInProgress: action.isFetching };
+      return {
+        ...state,
+        followingInProgress: action.isFetching
+          ? [...state.followingInProgress, action.userId]
+          : state.followingInProgress.filter((id) => id != action.userId),
+      };
 
     default:
       return state;
@@ -98,10 +103,11 @@ export const setUserProfileAC = (userProfile) => {
   };
 };
 
-export const setToggleFollowingInProgressAC = (isFetching) => {
+export const setToggleFollowingInProgressAC = (isFetching, userId) => {
   return {
     type: TOGGLE_IS_FOLLOWING_IN_PROGRESS,
     isFetching,
+    userId,
   };
 };
 

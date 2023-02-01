@@ -9,8 +9,8 @@ import {
 import axios from "axios";
 import React from "react";
 import Users from "./Users";
-
 import Preloader from "./../commands/Preloader/Preloader";
+import { usersAPI } from "../../DAL/api";
 
 const mapStateToProps = (state) => {
   return {
@@ -26,16 +26,11 @@ class UsersContainer extends React.Component {
   componentDidMount() {
     this.props.setToggleIsFetchingAC(true);
 
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${this.props.currentPage}`,
-        {
-          withCredentials: true,
-        }
-      )
-      .then((response) => {
+    usersAPI
+      .getUsers(this.props.pageSize, this.props.currentPage)
+      .then((data) => {
         this.props.setToggleIsFetchingAC(false);
-        this.props.setUsersAC(response.data.items);
+        this.props.setUsersAC(data.items);
       });
   }
 
@@ -43,17 +38,10 @@ class UsersContainer extends React.Component {
     this.props.setToggleIsFetchingAC(true);
     this.props.setCurrentPageAC(pageNumber);
 
-    axios
-      .get(
-        `https://social-network.samuraijs.com/api/1.0/users?count=${this.props.pageSize}&page=${pageNumber}`,
-        { withCredentials: true }
-      )
-
-      .then((response) => {
-        this.props.setToggleIsFetchingAC(false);
-        console.log(response);
-        this.props.setUsersAC(response.data.items);
-      });
+    usersAPI.getUsers(this.props.pageSize, pageNumber).then((data) => {
+      this.props.setToggleIsFetchingAC(false);
+      this.props.setUsersAC(data.items);
+    });
   };
 
   render() {

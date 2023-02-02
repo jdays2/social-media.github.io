@@ -22,32 +22,28 @@ function Dialogs({
     sendMessage();
   };
 
-  if (isLogin === true) {
-    return (
-      <div className={s.dialogs}>
-        <div className={s.dialogs_items}>
-          {dialoges.map((dialog) => (
-            <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
-          ))}
-        </div>
-        <div className={s.messages}>
-          {messages.map((message) => (
-            <Message key={message.id} message={message.message} />
-          ))}
-          <div>
-            <textarea
-              onChange={onMessageChange}
-              value={newMessageText}
-            ></textarea>
+  return (
+    <div className={s.dialogs}>
+      <div className={s.dialogs_items}>
+        {dialoges.map((dialog) => (
+          <DialogItem key={dialog.id} id={dialog.id} name={dialog.name} />
+        ))}
+      </div>
+      <div className={s.messages}>
+        {messages.map((message) => (
+          <Message key={message.id} message={message.message} />
+        ))}
+        <div>
+          <textarea
+            onChange={onMessageChange}
+            value={newMessageText}
+          ></textarea>
 
-            <button onClick={onSendMessage}>Отправить</button>
-          </div>
+          <button onClick={onSendMessage}>Отправить</button>
         </div>
       </div>
-    );
-  } else {
-    return <Navigate to="/login" />;
-  }
+    </div>
+  );
 }
 
 export default Dialogs;

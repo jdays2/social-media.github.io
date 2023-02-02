@@ -1,6 +1,6 @@
 import Profile from "./Profile";
 import React from "react";
-import axios from "axios";
+import { withAuthRedirect } from "../../hoc/withAuthRedirect";
 import { connect } from "react-redux";
 import { getProfileTC } from "../../Redux/usersPageReducer";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
@@ -8,6 +8,7 @@ import { useLocation, useNavigate, useParams } from "react-router-dom";
 class ProfileContainer extends React.Component {
   componentDidMount() {
     let userId = this.props.router.params.id;
+
     this.props.getProfileTC(userId);
   }
 
@@ -18,6 +19,7 @@ class ProfileContainer extends React.Component {
 
 let mapStateToProps = (state) => ({
   profile: state.usersPage.profile,
+  isLogin: state.auth.isLogin,
 });
 
 function withRouter(Component) {
@@ -31,5 +33,5 @@ function withRouter(Component) {
 }
 
 export default connect(mapStateToProps, { getProfileTC })(
-  withRouter(ProfileContainer)
+  withRouter(withAuthRedirect(Profile))
 );
